@@ -5,6 +5,7 @@ import re
 import subprocess
 import threading
 from typing import List
+import os
 
 
 CONFIG_FILE = "config.toml"
@@ -21,8 +22,10 @@ class MarkdownBooksImp(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.actionBooks_B.triggered.connect(self.onActionBooksToggled)
-        self.config = toml.load(CONFIG_FILE)
-        self.updateBooks()
+        self.config = dict()
+        if os.path.exists(CONFIG_FILE):
+            self.config = toml.load(CONFIG_FILE)
+            self.updateBooks()
 
         self.ui.listWidget.itemDoubleClicked.connect(self.onListWidgetItemDoubleClicked)
 
@@ -32,6 +35,7 @@ class MarkdownBooksImp(QMainWindow):
         if books_dialog.exec_():
             self.config = books_dialog.config
             print(self.config)
+            self.updateBooks()
         else:
             print("Canceled")
 
