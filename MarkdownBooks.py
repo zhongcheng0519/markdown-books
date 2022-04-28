@@ -26,6 +26,27 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.comboBoxTool = QComboBox(self.centralwidget)
+        self.comboBoxTool.addItem("")
+        self.comboBoxTool.addItem("")
+        self.comboBoxTool.setObjectName(u"comboBoxTool")
+
+        self.horizontalLayout.addWidget(self.comboBoxTool)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
         self.listWidget = QListWidget(self.centralwidget)
         self.listWidget.setObjectName(u"listWidget")
 
@@ -34,7 +55,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 26))
+        self.menubar.setGeometry(QRect(0, 0, 800, 23))
         self.menu = QMenu(self.menubar)
         self.menu.setObjectName(u"menu")
         MainWindow.setMenuBar(self.menubar)
@@ -54,6 +75,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.actionEnvironment_E.setText(QCoreApplication.translate("MainWindow", u"Environment(&E)", None))
         self.actionBooks_B.setText(QCoreApplication.translate("MainWindow", u"Books(&B)", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Tool:", None))
+        self.comboBoxTool.setItemText(0, QCoreApplication.translate("MainWindow", u"typora", None))
+        self.comboBoxTool.setItemText(1, QCoreApplication.translate("MainWindow", u"Notable", None))
+
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"Config(&C)", None))
     # retranslateUi
 

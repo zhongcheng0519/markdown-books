@@ -3,9 +3,15 @@ from BooksDialogImp import *
 import toml
 import re
 import subprocess
+import threading
+from typing import List
 
 
 CONFIG_FILE = "config.toml"
+
+
+def run_external_cmd(cmd: List[str]):
+    subprocess.run(cmd)
 
 
 class MarkdownBooksImp(QMainWindow):
@@ -48,7 +54,10 @@ class MarkdownBooksImp(QMainWindow):
             else:
                 print('%s not in var_map' % rep_var)
         print(book_path)
-        subprocess.run(["typora", book_path])
+        tool = self.ui.comboBoxTool.currentText()
+        cmd = [tool, book_path]
+        t = threading.Thread(target=run_external_cmd, args=(cmd, ))
+        t.start()
 
 
 if __name__ == "__main__":

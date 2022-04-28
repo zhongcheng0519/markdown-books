@@ -1,5 +1,0 @@
-[env]
-our = "C:\\Users\\zhong\\Documents\\OurSpace"
-
-[books]
-"钟宬日记" = "@{our}\\work_zc\\日记"
