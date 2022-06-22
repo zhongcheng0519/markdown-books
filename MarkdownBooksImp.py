@@ -42,6 +42,7 @@ class MarkdownBooksImp(QMainWindow):
     def updateBooks(self):
         print("updateBooks")
         books = self.config["books"]
+        self.ui.listWidget.clear()
         for key in books:
             self.ui.listWidget.addItem(QListWidgetItem(QIcon(":/res/icon"), key))
 
