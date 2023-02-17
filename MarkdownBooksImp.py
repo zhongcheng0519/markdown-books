@@ -10,6 +10,10 @@ import os
 
 CONFIG_FILE = "config.toml"
 
+# read version
+with open("VERSION", "rt") as fv:
+    __version__ = fv.readline().strip().strip('\n').strip('\r')
+
 
 def run_external_cmd(cmd: List[str]):
     subprocess.run(cmd)
@@ -21,6 +25,7 @@ class MarkdownBooksImp(QMainWindow):
         super(MarkdownBooksImp, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.setWindowIcon(QIcon("books.png"))
         self.ui.actionBooks_B.triggered.connect(self.onActionBooksToggled)
         self.config = dict()
         if os.path.exists(CONFIG_FILE):
@@ -66,6 +71,11 @@ class MarkdownBooksImp(QMainWindow):
 
 
 if __name__ == "__main__":
+    import ctypes
+
+    myappid = 'xingzhi.markdownbooks.{__version__}'
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
     app = QApplication()
     main_window = MarkdownBooksImp()
     main_window.show()

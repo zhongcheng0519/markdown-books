@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Markdown Books", None))
         self.actionEnvironment_E.setText(QCoreApplication.translate("MainWindow", u"Environment(&E)", None))
         self.actionBooks_B.setText(QCoreApplication.translate("MainWindow", u"Books(&B)", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Tool:", None))
